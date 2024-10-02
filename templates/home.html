@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Student Flask App with Live Search
+{% endblock %}
+
+{% block content %}
+    <!-- Page Header -->
+    <h1 class="text-2xl font-bold mb-6">Grant Budget Generator</h1>
+
+    <!-- Search Form -->
+    <form action="{{ url_for('home') }}" method="GET" class="mb-6">
+        <input type="text" name="query" placeholder="Search student by name" value="{{ query }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" />
+        <button type="submit" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Search</button>
+    </form>
+
+    <!-- Display Results -->
+    {% if query %}
+        <h2 class="text-xl font-semibold mt-4 mb-2">Search Results for "{{ query }}"</h2>
+        {% if rows %}
+            <ul class="bg-white border border-gray-300 rounded shadow-lg z-10">
+                {% for student in rows %}
+                    <li class="py-2 px-4 hover:bg-gray-200">{{ student.name }} - {{ student.addr }} - {{ student.city }} - {{ student.zip }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found for "{{ query }}".</p>
+        {% endif %}
+    {% endif %}
+{% endblock %}

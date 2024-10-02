@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Edit Researcher
+{% endblock %}
+
+{% block content %}
+    <h1 class="text-2xl font-bold mb-6">Edit Researcher Records</h1>
+
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-blue-500 text-white">
+                <tr>
+                    <th class="w-1/6 py-3 px-4 text-left">Researcher ID</th>
+                    <th class="w-1/4 py-3 px-4 text-left">Name</th>
+                    <th class="w-1/4 py-3 px-4 text-left">Address</th>
+                    <th class="w-1/6 py-3 px-4 text-left">City</th>
+                    <th class="w-1/6 py-3 px-4 text-left">Zip Code</th>
+                    <th class="w-1/6 py-3 px-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr class="border-t hover:bg-gray-100">
+                    <!-- Researcher ID (Non-editable) -->
+                    <td class="py-3 px-4">
+                        <span>{{ row['rowid'] }}</span>
+                        <input type="hidden" name="rowid" value="{{ row['rowid'] }}" />
+                    </td>
+
+                    <!-- Name Field (Editable) -->
+                    <td class="py-3 px-4">
+                        <input type="text" name="nm" value="{{ row['name'] }}" class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </td>
+
+                    <!-- Address Field (Editable) -->
+                    <td class="py-3 px-4">
+                        <input type="text" name="add" value="{{ row['addr'] }}" class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </td>
+
+                    <!-- City Field (Editable) -->
+                    <td class="py-3 px-4">
+                        <input type="text" name="city" value="{{ row['city'] }}" class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </td>
+
+                    <!-- Zip Code Field (Editable) -->
+                    <td class="py-3 px-4">
+                        <input type="text" name="zip" value="{{ row['zip'] }}" class="shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    </td>
+
+                    <!-- Submit Button for Editing -->
+                    <td class="py-3 px-4 text-center">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Update</button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

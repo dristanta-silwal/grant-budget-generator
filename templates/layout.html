@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    <!-- Navigation -->
+    <div class="bg-blue-500 text-white py-4">
+        <div class="container mx-auto flex justify-around">
+            <a href="{{ url_for('home') }}" class="hover:text-gray-300">Home</a>
+            <a href="{{ url_for('enternew') }}" class="hover:text-gray-300">Add New Researcher</a>
+            <a href="{{ url_for('list') }}" class="hover:text-gray-300">Review and Edit Researchers</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto py-6">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Dristanta</p>
+        </div>
+    </footer>
+</body>
+</html>
